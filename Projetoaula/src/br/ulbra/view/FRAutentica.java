@@ -6,6 +6,7 @@
 package br.ulbra.view;
 
 import br.ulbra.controller.UsuarioController;
+import com.sun.glass.events.KeyEvent;
 
 /**
  *
@@ -58,6 +59,12 @@ public class FRAutentica extends javax.swing.JFrame {
         });
 
         jLabel3.setText("SENHA");
+
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
+            }
+        });
 
         txtEntrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         txtEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/open.png"))); // NOI18N
@@ -133,15 +140,25 @@ public class FRAutentica extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEntrarActionPerformed
 
     private void txtEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEntrarMouseClicked
-        UsuarioController controller = new UsuarioController();
+      logar();
         
+    }//GEN-LAST:event_txtEntrarMouseClicked
+
+    private void logar(){
+        UsuarioController controller = new UsuarioController();
         char[] senha = txtSenha.getPassword();
         
-        if (controller.autenticar(txtEmail.getText(),new String(senha))){
+        if (controller.autenticar(txtEmail.getText(), new String(senha))){
             this.dispose();
             new FRMenu().setVisible(true);
         }
-    }//GEN-LAST:event_txtEntrarMouseClicked
+    }
+    
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+       if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+           logar();
+       }
+    }//GEN-LAST:event_txtSenhaKeyPressed
 
     /**
      * @param args the command line arguments
