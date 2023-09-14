@@ -66,6 +66,13 @@ public class Usuario {
         this.senhaUsu = senhaUsu;
     }
     
+      public String ativoToString(){
+       if (this.ativoUsu == 1)
+           return "Ativo";
+       else 
+           return "Inativo";
+   }
+    
    @Override
    public String toString () {
        return "Usuário(" + "pkUsuario" + pkUsuario + ", nomeUsu" + nomeUsu
@@ -73,5 +80,8 @@ public class Usuario {
                + ", ativoUsu" + ativoUsu + ", senhaUsu" + senhaUsu + ')';
    }
     
+ 
+   
+ 
     
 }
