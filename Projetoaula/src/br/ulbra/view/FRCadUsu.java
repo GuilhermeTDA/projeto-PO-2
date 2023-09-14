@@ -6,6 +6,7 @@
 package br.ulbra.view;
 
 import br.ulbra.controller.UsuarioController;
+import br.ulbra.utils.Utils;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -45,7 +46,7 @@ public class FRCadUsu extends javax.swing.JFrame {
         txtRepeirSenha = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        txtAtivo = new javax.swing.JCheckBox();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
 
@@ -114,7 +115,7 @@ public class FRCadUsu extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox1)
+                        .addComponent(txtAtivo)
                         .addGap(35, 35, 35)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -147,7 +148,7 @@ public class FRCadUsu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(txtAtivo, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -233,10 +234,13 @@ public class FRCadUsu extends javax.swing.JFrame {
             return;
         }
         UsuarioController controller = new UsuarioController();
-        if (controller.)
+        String senha = new String (txtSenha.getPassword());
+        if (controller.adicionarUsuario(txtNome.getText(), txtEmail.getText(), senha,
+                txtNasc.getText(), Utils.salvarBoolean(txtAtivo.isSelected()))){
+            this.dispose();
             
-             
-        
+        }
+            
     
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
@@ -277,7 +281,6 @@ public class FRCadUsu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -288,6 +291,7 @@ public class FRCadUsu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JCheckBox txtAtivo;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNasc;
     private javax.swing.JTextField txtNome;
