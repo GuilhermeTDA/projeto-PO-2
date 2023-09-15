@@ -7,6 +7,7 @@ package br.ulbra.view;
 
 import br.ulbra.controller.UsuarioController;
 import br.ulbra.model.Usuario;
+import com.sun.glass.events.KeyEvent;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,9 +19,12 @@ public class FRConUsu extends javax.swing.JFrame {
     /**
      * Creates new form FRConUsu
      */
-    public FRConUsu() {
+    
+     public FRConUsu() {
         initComponents();
+        setLocationRelativeTo(null);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,7 +54,11 @@ public class FRConUsu extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("Filtro");
 
-        txtFiltro.setText("jTextField1");
+        txtFiltro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFiltroKeyPressed(evt);
+            }
+        });
 
         bdPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/search.png"))); // NOI18N
         bdPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -70,6 +78,11 @@ public class FRConUsu extends javax.swing.JFrame {
                 "Cod", "Nome", "Email", "DT Nasc", "Ativo"
             }
         ));
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabela);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -133,8 +146,26 @@ public class FRConUsu extends javax.swing.JFrame {
     }
     
     private void bdPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bdPesquisarMouseClicked
-        
+        pesquisar();
     }//GEN-LAST:event_bdPesquisarMouseClicked
+
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        if (tabela.getSelectedRow() != -1){
+            int pk = Integer.parseInt (
+            tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
+            
+            FRUpdUsu telaUPD = new FRUpdUsu();
+            telaUPD.setPkUsuario(pk);
+            telaUPD.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_tabelaMouseClicked
+
+    private void txtFiltroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+           pesquisar();
+       }
+    }//GEN-LAST:event_txtFiltroKeyPressed
 
     /**
      * @param args the command line arguments

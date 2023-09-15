@@ -99,9 +99,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFiltro">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtFiltroKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bdPesquisar">
           <Properties>
@@ -164,6 +164,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelaMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
