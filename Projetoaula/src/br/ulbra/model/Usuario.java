@@ -50,11 +50,11 @@ public class Usuario {
         this.dataNascUsu = dataNascUsu;
     }
 
-    public int getAtivoUSu() {
+    public int getAtivoUsu() {
         return ativoUsu;
     }
 
-    public void setAtivoUSu(int ativoUSu) {
+    public void setAtivoUsu(int ativoUSu) {
         this.ativoUsu = ativoUSu;
     }
 
