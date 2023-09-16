@@ -69,7 +69,7 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtSenha1" alignment="0" min="-2" pref="309" max="-2" attributes="0"/>
+                              <Component id="txtRepSenha" alignment="0" min="-2" pref="309" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -173,7 +173,7 @@
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="txtSenha1" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="txtRepSenha" min="-2" pref="33" max="-2" attributes="0"/>
                   <EmptySpace pref="29" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="bdVoltar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
@@ -324,7 +324,7 @@
             <Property name="text" type="java.lang.String" value="Codigo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="txtSenha1">
+        <Component class="javax.swing.JPasswordField" name="txtRepSenha">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
