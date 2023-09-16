@@ -52,7 +52,7 @@ public class FRUpdUsu extends javax.swing.JFrame {
         bdVoltar = new javax.swing.JButton();
         txtCodigo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtSenha1 = new javax.swing.JPasswordField();
+        txtRepSenha = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -164,7 +164,7 @@ public class FRUpdUsu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel9)
-                            .addComponent(txtSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtRepSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -245,7 +245,7 @@ public class FRUpdUsu extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtRepSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bdVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,6 +307,7 @@ public class FRUpdUsu extends javax.swing.JFrame {
         txtEmail.setText(usu.getEmailUsu());
         txtNasc.setText(usu.getDataNascUsu());
         txtSenha.setText(usu.getSenhaUsu());
+        txtRepSenha.setText(usu.getSenhaUsu());
         chkAtivo.setSelected(usu.getAtivoUsu() == 1);
     }//GEN-LAST:event_formWindowActivated
 
@@ -315,7 +316,14 @@ public class FRUpdUsu extends javax.swing.JFrame {
     }//GEN-LAST:event_bdVoltarMouseClicked
 
     private void bdExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bdExcluirMouseClicked
-
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja excluir o usuário?",
+                "confirmação",JOptionPane.YES_NO_OPTION);
+        if (resposta == JOptionPane.YES_OPTION){  
+             UsuarioController controller = new UsuarioController();
+          if(controller.excluirUsuario(pk)){
+              this.dispose();
+          }
+        }
     }//GEN-LAST:event_bdExcluirMouseClicked
 
     private void bdAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bdAlterarMouseClicked
@@ -441,7 +449,7 @@ public class FRUpdUsu extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNasc;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JPasswordField txtRepSenha;
     private javax.swing.JPasswordField txtSenha;
-    private javax.swing.JPasswordField txtSenha1;
     // End of variables declaration//GEN-END:variables
 }

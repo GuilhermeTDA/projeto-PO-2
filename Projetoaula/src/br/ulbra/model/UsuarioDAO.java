@@ -172,7 +172,7 @@ public class UsuarioDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("UPDATE tbusuario SET nomeussu = ?, "
+            stmt = con.prepareStatement("UPDATE tbusuario SET nomeusu = ?, "
             +" emailusu = ?,senhausu = ?, datanascusu = ?, "
             +" ativousu = ? WHERE pkusuario = ?");
             stmt.setString(1, u.getNomeUsu());
@@ -188,6 +188,27 @@ public class UsuarioDAO {
             return true;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
+        } finally {
+            GerenciadorConexao.closeConnection(con, stmt);
+        }
+        return false;
+    }
+     
+      public boolean excluirUsuario(int pkUsuario) {
+       GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
+        Connection con = gerenciador.getConexao();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("DELETE FROM tbusuario WHERE pkusuario = ?");
+            stmt.setInt(1, pkUsuario);
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Excluido com sucesso");
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
         } finally {
             GerenciadorConexao.closeConnection(con, stmt);
         }
