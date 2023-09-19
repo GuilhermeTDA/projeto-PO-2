@@ -7,20 +7,32 @@ package br.ulbra.view;
 
 import br.ulbra.controller.UsuarioController;
 import com.sun.glass.events.KeyEvent;
-
 /**
  *
  * @author aluno.saolucas
  */
-public class FRAutentica extends javax.swing.JFrame {
+public class FRAutentica extends javax.swing.JDialog {
 
     /**
-     * Creates new form FRAutentica
+     * Creates new form FRAutentica_
      */
-    public FRAutentica() {
+    public FRAutentica(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
     }
+    
+    private void logar(){
+        UsuarioController controller = new UsuarioController();
+        char[] senha = txtSenha.getPassword();
+        
+        if (controller.autenticar(txtEmail.getText(), new String(senha))){
+            this.dispose();
+            new FRMenu().setVisible(true);
+        }
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,7 +43,6 @@ public class FRAutentica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollBar1 = new javax.swing.JScrollBar();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -40,9 +51,7 @@ public class FRAutentica extends javax.swing.JFrame {
         txtSenha = new javax.swing.JPasswordField();
         txtEntrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Autentica");
-        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -102,7 +111,7 @@ public class FRAutentica extends javax.swing.JFrame {
                             .addComponent(txtEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
                             .addComponent(txtEmail))))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +128,7 @@ public class FRAutentica extends javax.swing.JFrame {
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -140,34 +149,24 @@ public class FRAutentica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void txtEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEntrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEntrarActionPerformed
-
-    private void txtEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEntrarMouseClicked
-      logar();
-        
-    }//GEN-LAST:event_txtEntrarMouseClicked
-
-    private void logar(){
-        UsuarioController controller = new UsuarioController();
-        char[] senha = txtSenha.getPassword();
-        
-        if (controller.autenticar(txtEmail.getText(), new String(senha))){
-            this.dispose();
-            new FRMenu().setVisible(true);
-        }
-    }
-    
-    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
-       if (evt.getKeyCode() == KeyEvent.VK_ENTER){
-           logar();
-       }
-    }//GEN-LAST:event_txtSenhaKeyPressed
-
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaActionPerformed
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            logar();
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
+
+    private void txtEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEntrarMouseClicked
+        logar();
+
+    }//GEN-LAST:event_txtEntrarMouseClicked
+
+    private void txtEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEntrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,11 +194,19 @@ public class FRAutentica extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FRAutentica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FRAutentica().setVisible(true);
+                FRAutentica dialog = new FRAutentica(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -209,7 +216,6 @@ public class FRAutentica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JButton txtEntrar;
     private javax.swing.JPasswordField txtSenha;

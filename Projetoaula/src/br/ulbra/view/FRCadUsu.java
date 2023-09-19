@@ -5,24 +5,25 @@
  */
 package br.ulbra.view;
 
+import javax.swing.JOptionPane;
 import br.ulbra.controller.UsuarioController;
 import br.ulbra.utils.Utils;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author aluno.saolucas
  */
-public class FRCadUsu extends javax.swing.JFrame {
+public class FRCadUsu extends javax.swing.JDialog {
 
     /**
-     * Creates new form FRcadUsu
+     * Creates new form FRCadUSu_
      */
-    public FRCadUsu() {
+    public FRCadUsu(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -52,6 +53,7 @@ public class FRCadUsu extends javax.swing.JFrame {
         jToggleButton2 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Ulbra.Cadastro de usuário");
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -102,46 +104,45 @@ public class FRCadUsu extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSenha)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmail)
-                    .addComponent(jLabel3)
-                    .addComponent(txtNome)
-                    .addComponent(jLabel1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addGap(14, 14, 14))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRepeirSenha, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtAtivo)
-                        .addGap(35, 35, 35)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(bdSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(113, 113, 113))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(43, 43, 43)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(442, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtSenha)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmail)
+                        .addComponent(jLabel3)
+                        .addComponent(txtNome)
+                        .addComponent(jLabel1)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                            .addComponent(jLabel7)
+                            .addGap(14, 14, 14))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRepeirSenha, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(txtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtAtivo)
+                            .addGap(35, 35, 35))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addGap(51, 51, 51)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
@@ -171,11 +172,6 @@ public class FRCadUsu extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(117, 117, 117)
-                    .addComponent(jLabel4)
-                    .addContainerGap(228, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -191,10 +187,6 @@ public class FRCadUsu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jToggleButton2MouseClicked
 
     private boolean verificarCampos() {
         if (txtNome.getText().equals("")) {
@@ -234,7 +226,6 @@ public class FRCadUsu extends javax.swing.JFrame {
 
         return true;
     }
-
     private void bdSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bdSalvarMouseClicked
         if (!verificarCampos()) {
             return;
@@ -242,17 +233,20 @@ public class FRCadUsu extends javax.swing.JFrame {
         UsuarioController controller = new UsuarioController();
         String senha = new String (txtSenha.getPassword());
         if (controller.adicionarUsuario(txtNome.getText(), txtEmail.getText(), senha,
-                txtNasc.getText(), Utils.salvarBoolean(txtAtivo.isSelected()))){
-            this.dispose();
-            
+            txtNasc.getText(), Utils.salvarBoolean(txtAtivo.isSelected()))){
+        this.dispose();
+
         }
-            
-    
+
     }//GEN-LAST:event_bdSalvarMouseClicked
 
     private void bdSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdSalvarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bdSalvarActionPerformed
+
+    private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jToggleButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -281,11 +275,20 @@ public class FRCadUsu extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FRCadUsu().setVisible(true);
+                FRCadUsu dialog = new FRCadUsu(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
