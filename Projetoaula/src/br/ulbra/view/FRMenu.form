@@ -24,7 +24,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="???"/>
+                <Property name="text" type="java.lang.String" value="Livros"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="miSair">
@@ -46,6 +46,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miUsuConsultaActionPerformed"/>
               </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Livros"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -8,19 +8,18 @@ package br.ulbra.view;
 import java.awt.Desktop;
 import java.net.URI;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author aluno.saolucas
  */
-public class FRSobre extends javax.swing.JFrame {
+public class FRSobre extends javax.swing.JDialog {
 
     /**
-     * Creates new form FRSobre
+     * Creates new form FRSobre_
      */
-    public FRSobre() {
+    public FRSobre(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
     }
 
     /**
@@ -32,7 +31,6 @@ public class FRSobre extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -42,9 +40,7 @@ public class FRSobre extends javax.swing.JFrame {
         bdVoltar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
-        jLabel3.setText("jLabel3");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -88,8 +84,6 @@ public class FRSobre extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/logoPequena_1.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -132,7 +126,7 @@ public class FRSobre extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(28, 28, 28)
                 .addComponent(bgGit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bdVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -151,6 +145,16 @@ public class FRSobre extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bgGitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgGitMouseClicked
+        try{
+            Desktop desktop = Desktop.getDesktop();
+            URI uri = new URI("https://github.com/GuilhermeTDA");
+            desktop.browse(uri);
+        } catch (Exception e){
+            JOptionPane.showConfirmDialog(null, e);
+        }
+    }//GEN-LAST:event_bgGitMouseClicked
+
     private void bgGitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bgGitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bgGitActionPerformed
@@ -162,16 +166,6 @@ public class FRSobre extends javax.swing.JFrame {
     private void bdVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdVoltarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bdVoltarActionPerformed
-
-    private void bgGitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgGitMouseClicked
-        try{
-            Desktop desktop = Desktop.getDesktop();
-            URI uri = new URI("https://github.com/GuilhermeTDA");
-            desktop.browse(uri);
-        } catch (Exception e){
-            JOptionPane.showConfirmDialog(null, e);
-        }
-    }//GEN-LAST:event_bgGitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -199,11 +193,19 @@ public class FRSobre extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FRSobre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FRSobre().setVisible(true);
+                FRSobre dialog = new FRSobre(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -213,7 +215,6 @@ public class FRSobre extends javax.swing.JFrame {
     private javax.swing.JButton bgGit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
