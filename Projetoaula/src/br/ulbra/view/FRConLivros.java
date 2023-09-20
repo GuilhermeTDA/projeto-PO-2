@@ -5,6 +5,13 @@
  */
 package br.ulbra.view;
 
+import br.ulbra.controller.LivroController;
+import br.ulbra.controller.UsuarioController;
+import br.ulbra.model.Livro;
+import br.ulbra.model.Usuario;
+import java.awt.event.KeyEvent;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author aluno.saolucas
@@ -14,9 +21,11 @@ public class FRConLivros extends javax.swing.JDialog {
     /**
      * Creates new form FRConLivros
      */
+   
     public FRConLivros(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -145,7 +154,19 @@ public class FRConLivros extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ private void pesquisar(){
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setNumRows(0);
+        LivroController controller = new LivroController();
+        for(Livro livro : controller.readForDesc(txtFiltro.getText())){
+             Object[] linha = {livro.getPkLivro()
+                     , livro.getNomeLivro()
+                     , livro.getLançLivro()
+                     , livro.getGenLivro()
+                     , livro.getEstoqueLivro()};
+                     modelo.addRow(linha);
+             }
+}
     private void txtFiltroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){
             pesquisar();
@@ -161,9 +182,9 @@ public class FRConLivros extends javax.swing.JDialog {
             int pk = Integer.parseInt (
                 tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
 
-            FRUpdUsu telaUPD = new FRUpdUsu(null, rootPaneCheckingEnabled);
-            telaUPD.setPkUsuario(pk);
-            telaUPD.setVisible(true);
+            FRUpdLivros livroUPD = new FRUpdLivros(null, rootPaneCheckingEnabled);
+            livroUPD.setPkLivro(pk);
+            livroUPD.setVisible(true);
         }
     }//GEN-LAST:event_tabelaMouseClicked
 

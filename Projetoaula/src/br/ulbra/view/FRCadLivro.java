@@ -5,9 +5,11 @@
  */
 package br.ulbra.view;
 
+import br.ulbra.controller.LivroController;
 import javax.swing.JOptionPane;
 import br.ulbra.controller.UsuarioController;
 import br.ulbra.utils.Utils;
+import javax.sound.sampled.Line;
 /**
  *
  * @author aluno.saolucas
@@ -28,7 +30,7 @@ public class FRCadLivro extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "campo 'Nome' em branco");
             return false;
         }
-        if (!txtNome.getText().matches("^[\\p{L} ]+$")) {
+        if (!txtNome.getText().matches("^[\\p{L}0-9 ]+$")) {
             JOptionPane.showMessageDialog(null, "campo 'Nome' possui caracteres inválidos");
             return false;
         }
@@ -37,28 +39,13 @@ public class FRCadLivro extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "campo 'Gênero' em branco");
             return false;
         }
-        if (!txtEmail.getText().matches("^[a-a-zA-Z._]+@[a-zA-Z._]+.[a-zA-Z._ ]+$")) {
-            JOptionPane.showMessageDialog(null, "campo 'Email' possui caracteres inválidos");
-            return false;
-        }
+      
 
-        if (!txtNasc.getText().matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
-            JOptionPane.showMessageDialog(null, "campo 'Data de Nascimento' inválido."
+        if (!txtLançamento.getText().matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
+            JOptionPane.showMessageDialog(null, "campo 'Lançamento' inválido."
                     + "Ex: 01/01/2000");
             return false;
         }
-        char[] senha = txtSenha.getPassword();
-        if (new String(senha).length() < 8) {
-            JOptionPane.showMessageDialog(null,
-                    "Campo 'senha' deve ser maior que 8 caracteres");
-            return false;
-        }
-        if (!new String(senha).equals(new String(txtSenha.getPassword()))) {
-            JOptionPane.showMessageDialog(null,
-                    "As senhas não são iguais");
-            return false;
-        }
-
         return true;
     }
     /**
@@ -243,9 +230,9 @@ public class FRCadLivro extends javax.swing.JDialog {
             return;
         }
         
-        UsuarioController controller = new UsuarioController();
-        String senha = new String ();
-        if (controller.adicionarUsuario(txtNome.getText(), txtGen.getText(), senha,
+        LivroController controller = new LivroController();
+        
+        if (controller.adicionarLivro(txtNome.getText(), txtGen.getText(),
             txtLançamento.getText(), Utils.salvarBoolean(txtAtivo.isSelected()))){
         this.dispose();
 
