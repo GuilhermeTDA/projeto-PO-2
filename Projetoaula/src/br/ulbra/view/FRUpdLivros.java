@@ -5,6 +5,10 @@
  */
 package br.ulbra.view;
 
+import br.ulbra.controller.UsuarioController;
+import br.ulbra.utils.Utils;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aluno.saolucas
@@ -17,6 +21,13 @@ public class FRUpdLivros extends javax.swing.JDialog {
     public FRUpdLivros(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+    }
+    
+     private int pk;
+
+    public void setPkLivro(int pk) {
+        this.pk = pk;
     }
 
     /**
@@ -195,10 +206,11 @@ public class FRUpdLivros extends javax.swing.JDialog {
                     .addComponent(txtLançamento, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAtivo, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bdExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bdSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bdExcluir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bdSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -215,7 +227,32 @@ public class FRUpdLivros extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+ private boolean verificarCampos() {
+        if (txtNome.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "campo 'Nome' em branco");
+            return false;
+        }
+        if (!txtNome.getText().matches("^[\\p{L} ]+$")) {
+            JOptionPane.showMessageDialog(null, "campo 'Nome' possui caracteres inválidos");
+            return false;
+        }
 
+        if (txtGen.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "campo 'Gênero' em branco");
+            return false;
+        }
+        if (!txtGen.getText().matches("^[a-a-zA-Z._]+@[a-zA-Z._]+.[a-zA-Z._ ]+$")) {
+            JOptionPane.showMessageDialog(null, "campo 'Gênero' possui caracteres inválidos");
+            return false;
+        }
+
+        if (!txtLançamento.getText().matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
+            JOptionPane.showMessageDialog(null, "campo 'Lançamento' inválido."
+                    + "Ex: 01/01/2000");
+            return false;
+        }
+        return true;
+    }
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed

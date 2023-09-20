@@ -6,7 +6,7 @@
 package br.ulbra.view;
 
 import br.ulbra.controller.UsuarioController;
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 /**
  *
  * @author aluno.saolucas
