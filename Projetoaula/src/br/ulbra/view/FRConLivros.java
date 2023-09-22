@@ -6,9 +6,7 @@
 package br.ulbra.view;
 
 import br.ulbra.controller.LivroController;
-import br.ulbra.controller.UsuarioController;
 import br.ulbra.model.Livro;
-import br.ulbra.model.Usuario;
 import java.awt.event.KeyEvent;
 import javax.swing.table.DefaultTableModel;
 
