@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 
 /**
  *
@@ -43,10 +44,11 @@ public class UsuarioDAO {
         return false;
     }
 
-    public boolean adicionarUsuario(String nome, String email, String senha, String datan, int ativo) {
+    public boolean adicionarUsuario(String nome, String email,
+            String senha, String datan, int ativo,Icon icone) {
         String sql = "INSERT into TBUSUARIO (nomeUsu,emailUsu,senhaUsu,dataNascUsu,ativoUsu) "
-                + "VALUES (?,?,?,?,?)";
-
+                + "VALUES (?,?,?,?,?,?)";
+ 
         try {
             PreparedStatement stmt = gerenciador.getConexao().prepareStatement(sql);
             stmt.setString(1, nome);

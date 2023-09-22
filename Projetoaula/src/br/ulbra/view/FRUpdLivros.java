@@ -5,7 +5,8 @@
  */
 package br.ulbra.view;
 
-import br.ulbra.controller.UsuarioController;
+import br.ulbra.controller.LivroController;
+import br.ulbra.model.Livro;
 import br.ulbra.utils.Utils;
 import javax.swing.JOptionPane;
 
@@ -23,8 +24,8 @@ public class FRUpdLivros extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
     }
-    
-     private int pk;
+
+    private int pk;
 
     public void setPkLivro(int pk) {
         this.pk = pk;
@@ -47,13 +48,13 @@ public class FRUpdLivros extends javax.swing.JDialog {
         txtGen = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtLançamento = new javax.swing.JTextField();
-        bdSalvar = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        txtAtivo = new javax.swing.JCheckBox();
+        bdVoltar = new javax.swing.JToggleButton();
+        chkAtivo = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
         bdExcluir = new javax.swing.JButton();
         txtCodigo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        bdAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -88,35 +89,22 @@ public class FRUpdLivros extends javax.swing.JDialog {
             }
         });
 
-        bdSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/save.png"))); // NOI18N
-        bdSalvar.setText("SALVAR");
-        bdSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+        bdVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/back.png"))); // NOI18N
+        bdVoltar.setText("CANCELAR");
+        bdVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bdSalvarMouseClicked(evt);
+                bdVoltarMouseClicked(evt);
             }
         });
-        bdSalvar.addActionListener(new java.awt.event.ActionListener() {
+        bdVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bdSalvarActionPerformed(evt);
+                bdVoltarActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/back.png"))); // NOI18N
-        jToggleButton2.setText("CANCELAR");
-        jToggleButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jToggleButton2MouseClicked(evt);
-            }
-        });
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        chkAtivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
-            }
-        });
-
-        txtAtivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAtivoActionPerformed(evt);
+                chkAtivoActionPerformed(evt);
             }
         });
 
@@ -142,6 +130,20 @@ public class FRUpdLivros extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setText("Codigo");
 
+        bdAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        bdAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/edit.png"))); // NOI18N
+        bdAlterar.setText("Alterar");
+        bdAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bdAlterarMouseClicked(evt);
+            }
+        });
+        bdAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bdAlterarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -156,29 +158,26 @@ public class FRUpdLivros extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(txtLançamento, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtAtivo)
+                            .addComponent(chkAtivo)
                             .addGap(41, 41, 41))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                            .addComponent(jLabel7)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(bdExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel1)
+                                .addComponent(bdAlterar))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(bdVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(14, 14, 14)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addComponent(bdSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(36, 36, 36)
-                            .addComponent(bdExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(30, 30, 30)
-                            .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(55, 55, 55)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,13 +203,12 @@ public class FRUpdLivros extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtLançamento, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAtivo, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bdExcluir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bdSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(chkAtivo, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bdExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bdAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bdVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -227,22 +225,18 @@ public class FRUpdLivros extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- private boolean verificarCampos() {
+     private boolean verificarCampos() {
         if (txtNome.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "campo 'Nome' em branco");
             return false;
         }
-        if (!txtNome.getText().matches("^[\\p{L} ]+$")) {
+        if (!txtNome.getText().matches("^[\\p{L}0-9 ]+$")) {
             JOptionPane.showMessageDialog(null, "campo 'Nome' possui caracteres inválidos");
             return false;
         }
 
         if (txtGen.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "campo 'Gênero' em branco");
-            return false;
-        }
-        if (!txtGen.getText().matches("^[a-a-zA-Z._]+@[a-zA-Z._]+.[a-zA-Z._ ]+$")) {
-            JOptionPane.showMessageDialog(null, "campo 'Gênero' possui caracteres inválidos");
             return false;
         }
 
@@ -253,6 +247,7 @@ public class FRUpdLivros extends javax.swing.JDialog {
         }
         return true;
     }
+
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
@@ -265,42 +260,24 @@ public class FRUpdLivros extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLançamentoActionPerformed
 
-    private void bdSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bdSalvarMouseClicked
-        if (!verificarCampos()) {
-            return;
-        }
-
-        UsuarioController controller = new UsuarioController();
-        String senha = new String ();
-        if (controller.adicionarUsuario(txtNome.getText(), txtGen.getText(), senha,
-            txtLançamento.getText(), Utils.salvarBoolean(txtAtivo.isSelected()))){
+    private void bdVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bdVoltarMouseClicked
         this.dispose();
+    }//GEN-LAST:event_bdVoltarMouseClicked
 
-        }
-    }//GEN-LAST:event_bdSalvarMouseClicked
-
-    private void bdSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdSalvarActionPerformed
+    private void bdVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdVoltarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bdSalvarActionPerformed
+    }//GEN-LAST:event_bdVoltarActionPerformed
 
-    private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jToggleButton2MouseClicked
-
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void chkAtivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAtivoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
-
-    private void txtAtivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAtivoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAtivoActionPerformed
+    }//GEN-LAST:event_chkAtivoActionPerformed
 
     private void bdExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bdExcluirMouseClicked
-        int resposta = JOptionPane.showConfirmDialog(null, "Deseja excluir o usuário?",
-            "confirmação",JOptionPane.YES_NO_OPTION);
-        if (resposta == JOptionPane.YES_OPTION){
-            UsuarioController controller = new UsuarioController();
-            if(controller.excluirUsuario(pk)){
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja excluir o livro?",
+                "confirmação", JOptionPane.YES_NO_OPTION);
+        if (resposta == JOptionPane.YES_OPTION) {
+            LivroController controller = new LivroController();
+            if (controller.excluirLivro(pk)) {
                 this.dispose();
             }
         }
@@ -309,6 +286,30 @@ public class FRUpdLivros extends javax.swing.JDialog {
     private void bdExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdExcluirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bdExcluirActionPerformed
+
+    private void bdAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bdAlterarMouseClicked
+        if (!verificarCampos()) {
+            return;
+        }
+        LivroController controller = new LivroController();
+        Livro livro = new Livro();
+        livro.setPkLivro(pk);
+        livro.setNomeLivro(txtNome.getText());
+        livro.setGenLivro(txtGen.getText());
+        livro.setEstoqueLivro(Utils.salvarBoolean(chkAtivo.isSelected()));
+        livro.setLançLivro(txtLançamento.getText());
+        if (controller.alterarLivro(livro)) {
+            this.dispose();
+
+        }
+        
+
+        
+    }//GEN-LAST:event_bdAlterarMouseClicked
+
+    private void bdAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bdAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,8 +355,10 @@ public class FRUpdLivros extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bdAlterar;
     private javax.swing.JButton bdExcluir;
-    private javax.swing.JToggleButton bdSalvar;
+    private javax.swing.JToggleButton bdVoltar;
+    private javax.swing.JCheckBox chkAtivo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -363,8 +366,6 @@ public class FRUpdLivros extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JCheckBox txtAtivo;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtGen;
     private javax.swing.JTextField txtLançamento;

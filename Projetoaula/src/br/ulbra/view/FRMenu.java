@@ -35,11 +35,11 @@ public class FRMenu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         miCadUsu = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        miCadLivro = new javax.swing.JMenuItem();
         miSair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         miUsuConsulta = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        miConLivro = new javax.swing.JMenuItem();
         miSobre = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
 
@@ -79,10 +79,20 @@ public class FRMenu extends javax.swing.JFrame {
         });
         jMenu1.add(miCadUsu);
 
-        jMenuItem4.setText("Livros");
-        jMenu1.add(jMenuItem4);
+        miCadLivro.setText("Livros");
+        miCadLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCadLivroActionPerformed(evt);
+            }
+        });
+        jMenu1.add(miCadLivro);
 
         miSair.setText("Sair");
+        miSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miSairActionPerformed(evt);
+            }
+        });
         jMenu1.add(miSair);
 
         jMenuBar1.add(jMenu1);
@@ -97,14 +107,24 @@ public class FRMenu extends javax.swing.JFrame {
         });
         jMenu2.add(miUsuConsulta);
 
-        jMenuItem2.setText("Livros");
-        jMenu2.add(jMenuItem2);
+        miConLivro.setText("Livros");
+        miConLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConLivroActionPerformed(evt);
+            }
+        });
+        jMenu2.add(miConLivro);
 
         jMenuBar1.add(jMenu2);
 
         miSobre.setText("Ajuda");
 
         jMenuItem7.setText("Sobre");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         miSobre.add(jMenuItem7);
 
         jMenuBar1.add(miSobre);
@@ -135,6 +155,22 @@ public class FRMenu extends javax.swing.JFrame {
         new FRCadUsu(this, rootPaneCheckingEnabled).setVisible(true);
 
     }//GEN-LAST:event_miCadUsuActionPerformed
+
+    private void miCadLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadLivroActionPerformed
+         new FRCadLivro(this, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_miCadLivroActionPerformed
+
+    private void miConLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConLivroActionPerformed
+          new FRConLivros(this, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_miConLivroActionPerformed
+
+    private void miSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_miSairActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+         new FRSobre(this, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,11 +213,11 @@ public class FRMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem miCadLivro;
     private javax.swing.JMenuItem miCadUsu;
+    private javax.swing.JMenuItem miConLivro;
     private javax.swing.JMenuItem miSair;
     private javax.swing.JMenu miSobre;
     private javax.swing.JMenuItem miUsuConsulta;

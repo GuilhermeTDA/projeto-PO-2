@@ -7,9 +7,7 @@ package br.ulbra.view;
 
 import br.ulbra.controller.LivroController;
 import javax.swing.JOptionPane;
-import br.ulbra.controller.UsuarioController;
 import br.ulbra.utils.Utils;
-import javax.sound.sampled.Line;
 /**
  *
  * @author aluno.saolucas
