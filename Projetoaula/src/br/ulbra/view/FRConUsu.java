@@ -179,6 +179,7 @@ private void pesquisar(){
 
             FRUpdUsu telaUPD = new FRUpdUsu(null, rootPaneCheckingEnabled);
             telaUPD.setPkUsuario(pk);
+            telaUPD.carregarUsu();
             telaUPD.setVisible(true);
         }
 
