@@ -35,19 +35,11 @@ public class UsuarioController {
         }
     }
 
-    public boolean adicionarUsuario(String nome, String email, String senha,
-            String datan, int ativo, Icon icone) {
-        try {
-            return usuarioDAO.adicionarUsuario(nome, email, senha, datan, ativo, icone);
+    public boolean adicionarUsuario(Usuario u) {
+       
+            return usuarioDAO.adicionarUsuario(u);
 
-        } catch (IOException ex) {
-            Logger.getLogger(
-                    UsuarioController.class.getName())
-                    .log(Level.SEVERE, null, ex);
-
-        }
-
-        return false;
+        
     }
 
     public List<Usuario> readForDesc(String desc) {
