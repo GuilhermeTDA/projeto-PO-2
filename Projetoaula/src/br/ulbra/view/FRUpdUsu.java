@@ -334,13 +334,13 @@ public class FRUpdUsu extends javax.swing.JDialog {
         UsuarioController controller = new UsuarioController();
         String senha = new String(txtSenha.getPassword());
         Usuario usuario = new Usuario();
-        usuario.setPkUsuario(pk);
-        usuario.setNomeUsu(txtNome.getText());
-        usuario.setEmailUsu(txtEmail.getText());
-        usuario.setAtivoUsu(Utils.salvarBoolean(chkAtivo.isSelected()));
-        usuario.setDataNascUsu(txtNasc.getText());
-        usuario.setSenhaUsu(senha);
-        usuario.setImagemUsu(lbFoto.getIcon());
+        usuario.setPk(pk);
+        usuario.setNome(txtNome.getText());
+        usuario.setEmail(txtEmail.getText());
+        usuario.setAtivo(Utils.salvarBoolean(chkAtivo.isSelected()));
+        usuario.setDataNasc(txtNasc.getText());
+        usuario.setSenha(senha);
+        usuario.setImagem(lbFoto.getIcon());
         if (controller.alterarUsuario(usuario)) {
             this.dispose();
 
@@ -407,15 +407,15 @@ public class FRUpdUsu extends javax.swing.JDialog {
           UsuarioController controller = new UsuarioController();
         Usuario usu = controller.readForPk(pk);
        
-        String codigo = String.valueOf(usu.getPkUsuario());
+        String codigo = String.valueOf(usu.getPk());
         txtCodigo.setText(codigo);
-        txtNome.setText(usu.getNomeUsu());
-        txtEmail.setText(usu.getEmailUsu());
-        txtNasc.setText(usu.getDataNascUsu());
-        txtSenha.setText(usu.getSenhaUsu());
-        txtSenha.setText(usu.getSenhaUsu());
-        chkAtivo.setSelected(usu.getAtivoUsu()== 1);
-        lbFoto.setIcon(usu.getImagemUsu());
+        txtNome.setText(usu.getNome());
+        txtEmail.setText(usu.getEmail());
+        txtNasc.setText(usu.getDataNasc());
+        txtSenha.setText(usu.getSenha());
+        txtSenha.setText(usu.getSenha());
+        chkAtivo.setSelected(usu.isAtivo()== 1);
+        lbFoto.setIcon(usu.getImagem());
     }
     private void btEscolherImagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEscolherImagemMouseClicked
         JFileChooser fileChooser = new JFileChooser();

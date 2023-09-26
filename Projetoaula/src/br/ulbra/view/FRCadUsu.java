@@ -115,6 +115,11 @@ public class FRCadUsu extends javax.swing.JDialog {
                 btEscolherImagemMouseClicked(evt);
             }
         });
+        btEscolherImagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEscolherImagemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -274,12 +279,12 @@ public class FRCadUsu extends javax.swing.JDialog {
         UsuarioController controller = new UsuarioController();
         String senha = new String (txtSenha.getPassword());
         Usuario usu = new Usuario();
-        usu.setNomeUsu(txtNome.getText());
-        usu.setEmailUsu( txtEmail.getText());
-        usu.setDataNascUsu(txtNasc.getText());
-        usu.setSenhaUsu(senha);
-        usu.setAtivoUsu( Utils.salvarBoolean(txtAtivo.isSelected()));
-        usu.setImagemUsu(lbFoto.getIcon());
+        usu.setNome(txtNome.getText());
+        usu.setEmail( txtEmail.getText());
+        usu.setDataNasc(txtNasc.getText());
+        usu.setSenha(senha);
+        usu.setAtivo( Utils.salvarBoolean(txtAtivo.isSelected()));
+        usu.setImagem(lbFoto.getIcon());
         if (controller.adicionarUsuario(usu)){
         this.dispose();
 
@@ -311,6 +316,10 @@ public class FRCadUsu extends javax.swing.JDialog {
            lbFoto.setIcon(iconRedimensionado);
         }
     }//GEN-LAST:event_btEscolherImagemMouseClicked
+
+    private void btEscolherImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEscolherImagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btEscolherImagemActionPerformed
 
     /**
      * @param args the command line arguments

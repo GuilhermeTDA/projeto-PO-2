@@ -32,10 +32,10 @@ private void pesquisar(){
         modelo.setNumRows(0);
         UsuarioController controller = new UsuarioController();
         for(Usuario usu : controller.readForDesc(txtFiltro.getText())){
-             Object[] linha = {usu.getPkUsuario()
-                     , usu.getNomeUsu()
-                     , usu.getEmailUsu()
-                     , usu.getDataNascUsu()
+             Object[] linha = {usu.getPk()
+                     , usu.getNome()
+                     , usu.getEmail()
+                     , usu.getDataNasc()
                      , usu.ativoToString()};
                      modelo.addRow(linha);
              }
