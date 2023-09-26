@@ -6,10 +6,7 @@ package br.ulbra.controller;
 
 import br.ulbra.model.Livro;
 import br.ulbra.model.LivroDAO;
-import br.ulbra.model.Usuario;
-import br.ulbra.model.UsuarioDAO;
 import java.util.List;
-import javax.swing.JOptionPane;
 /**
  *
  * @author S.Lucas
