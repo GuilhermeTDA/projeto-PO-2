@@ -6,13 +6,22 @@
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/model/LivroDAO.java</file>
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/view/FRConLivros.java</file>
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/view/FRSobre.java</file>
+            <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/model/AluguelDAO.java</file>
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/model/UsuarioDAO.java</file>
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/view/FRCadUsu.java</file>
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/view/FRUpdUsu.java</file>
+            <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/model/Pessoa.java</file>
+            <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/model/Aluguel.java</file>
+            <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/view/FRAluguel.java</file>
+            <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/controller/AluguelController.java</file>
+            <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/view/FRConAluguel.java</file>
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/view/FRAutentica.java</file>
+            <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/model/Livro.java</file>
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/view/FRConUsu.java</file>
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/model/GerenciadorConexao.java</file>
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/utils/Utils.java</file>
+            <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/controller/LivroController.java</file>
+            <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/model/Cliente.java</file>
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/view/FRMenu.java</file>
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/view/FRUpdLivros.java</file>
             <file>file:/C:/Users/S.Lucas/Documents/GitHub/projeto-PO-2/Projetoaula/src/br/ulbra/model/Usuario.java</file>

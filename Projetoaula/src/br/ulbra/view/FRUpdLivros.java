@@ -25,6 +25,7 @@ public class FRUpdLivros extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }
 
+    
     private int pk;
 
     public void setPkLivro(int pk) {
