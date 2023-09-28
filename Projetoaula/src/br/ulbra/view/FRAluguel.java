@@ -5,7 +5,7 @@
 package br.ulbra.view;
 
 import br.ulbra.controller.LivroController;
-import br.ulbra.controller.LivroUsuController;
+import br.ulbra.controller.AluguelController;
 import br.ulbra.utils.Utils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,12 +17,12 @@ import javax.swing.JOptionPane;
  *
  * @author S.Lucas
  */
-public class FRLivroUsu extends java.awt.Dialog {
+public class FRAluguel extends java.awt.Dialog {
 
     /**
      * Creates new form FRLivroUsu
      */
-    public FRLivroUsu(java.awt.Frame parent, boolean modal) {
+    public FRAluguel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -51,6 +51,7 @@ public class FRLivroUsu extends java.awt.Dialog {
         bdVoltar = new javax.swing.JButton();
         bdSalvar = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
+        bdExcluir = new javax.swing.JButton();
 
         jPanel1.setForeground(new java.awt.Color(204, 0, 0));
 
@@ -111,11 +112,6 @@ public class FRLivroUsu extends java.awt.Dialog {
                 bdVoltarMouseClicked(evt);
             }
         });
-        bdVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bdVoltarActionPerformed(evt);
-            }
-        });
 
         bdSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/save.png"))); // NOI18N
         bdSalvar.setText("SALVAR");
@@ -124,66 +120,77 @@ public class FRLivroUsu extends java.awt.Dialog {
                 bdSalvarMouseClicked(evt);
             }
         });
-        bdSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bdSalvarActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Este usuário alugará este livro");
+
+        bdExcluir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        bdExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/trash.png"))); // NOI18N
+        bdExcluir.setText("Excluir");
+        bdExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bdExcluirMouseClicked(evt);
+            }
+        });
+        bdExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bdExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(bdSalvar)
+                .addGap(73, 73, 73)
+                .addComponent(bdExcluir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bdVoltar)
+                .addGap(44, 44, 44))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(bdSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bdVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jLabel3))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(cUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                            .addComponent(cUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(jLabel1)))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel2))
-                            .addComponent(cLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(227, 227, 227)))
-                .addGap(44, 44, 44))
+                                .addGap(101, 101, 101)
+                                .addComponent(cLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addGap(71, 71, 71)))))
+                .addGap(39, 59, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel3)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addComponent(cUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bdVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bdSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(cLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bdVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bdSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bdExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 548, 441));
@@ -226,25 +233,38 @@ public class FRLivroUsu extends java.awt.Dialog {
         this.dispose();
     }//GEN-LAST:event_bdVoltarMouseClicked
 
-    private void bdVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdVoltarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bdVoltarActionPerformed
-
     private void bdSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bdSalvarMouseClicked
         if (!verificarCampos()) {
             return;
         }
-        
-          LivroUsuController controller = new LivroUsuController();
-        
-        if (controller.alugarLivro(Integer.parseInt(cLivro.getText()),Integer.parseInt( cUsu.getText()))){
-        this.dispose();
+
+        AluguelController controller = new AluguelController();
+        int livro = Integer.parseInt(cLivro.getText());
+        int usu = Integer.parseInt(cUsu.getText());
+        if (controller.alugarLivro(livro, usu)) {
+            this.dispose();
         }
     }//GEN-LAST:event_bdSalvarMouseClicked
 
-    private void bdSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdSalvarActionPerformed
+   
+    
+    
+    private void bdExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bdExcluirMouseClicked
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja devolver o livro?",
+            "confirmação", JOptionPane.YES_NO_OPTION);
+        if (resposta == JOptionPane.YES_OPTION) {
+              int livro = Integer.parseInt(cLivro.getText());
+               int usu = Integer.parseInt(cUsu.getText());
+            AluguelController controller = new AluguelController();
+            if (controller.devolverLivro(livro, usu)) {
+                this.dispose();
+            }
+        }
+    }//GEN-LAST:event_bdExcluirMouseClicked
+
+    private void bdExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bdSalvarActionPerformed
+    }//GEN-LAST:event_bdExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,7 +272,7 @@ public class FRLivroUsu extends java.awt.Dialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FRLivroUsu dialog = new FRLivroUsu(new java.awt.Frame(), true);
+                FRAluguel dialog = new FRAluguel(new java.awt.Frame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
@@ -265,6 +285,7 @@ public class FRLivroUsu extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bdExcluir;
     private javax.swing.JToggleButton bdSalvar;
     private javax.swing.JButton bdVoltar;
     private javax.swing.JTextField cLivro;
