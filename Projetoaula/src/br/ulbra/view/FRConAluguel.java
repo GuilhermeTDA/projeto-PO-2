@@ -4,12 +4,13 @@
  */
 package br.ulbra.view;
 
-
 import br.ulbra.controller.LivroController;
 import br.ulbra.controller.AluguelController;
+import br.ulbra.model.Aluguel;
 import br.ulbra.model.Livro;
 import java.awt.event.KeyEvent;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author S.Lucas
@@ -69,13 +70,13 @@ public class FRConAluguel extends java.awt.Dialog {
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Cod", "Nome", "Gênero", "DT Lançamento", "Em Estoque"
+                "id_aluguel", "usuario", "livro", "ação"
             }
         ));
         tabela.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,26 +149,25 @@ public class FRConAluguel extends java.awt.Dialog {
     /**
      * Closes the dialog
      */
-     private void pesquisar(){
+    private void pesquisar() {
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
         modelo.setNumRows(0);
         AluguelController controller = new AluguelController();
-        for(Livro livro : controller.readForDesc(txtFiltro.getText())){
-             Object[] linha = {livro.getPkLivro()
-                     , livro.getNomeLivro()
-                     , livro.getLançLivro()
-                     , livro.getGenLivro()
-                     , livro.getEstoqueLivro()};
-                     modelo.addRow(linha);
-             }
-}
+        for (Aluguel aluguel : controller.readForDesc(txtFiltro.getText())) {
+            Object[] linha = {aluguel.getId_aluguel(),
+                 aluguel.getfkusuario(),
+                 aluguel.getfklivro(),
+                 aluguel.acaoToString()};
+            modelo.addRow(linha);
+        }
+    }
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
         setVisible(false);
         dispose();
     }//GEN-LAST:event_closeDialog
 
     private void txtFiltroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             pesquisar();
         }
     }//GEN-LAST:event_txtFiltroKeyPressed
@@ -177,14 +177,7 @@ public class FRConAluguel extends java.awt.Dialog {
     }//GEN-LAST:event_bdPesquisarMouseClicked
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
-        if (tabela.getSelectedRow() != -1){
-            int pk = Integer.parseInt (
-                tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
-
-            FRUpdLivros livroUPD = new FRUpdLivros(null, rootPaneCheckingEnabled);
-            livroUPD.setPkLivro(pk);
-            livroUPD.setVisible(true);
-        }
+     
     }//GEN-LAST:event_tabelaMouseClicked
 
     private void bdVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bdVoltarMouseClicked

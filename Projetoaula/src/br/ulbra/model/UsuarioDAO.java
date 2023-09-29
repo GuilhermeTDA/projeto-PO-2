@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import java.util.logging.Logger;
-import javax.swing.Icon;
 import br.ulbra.utils.Utils;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;

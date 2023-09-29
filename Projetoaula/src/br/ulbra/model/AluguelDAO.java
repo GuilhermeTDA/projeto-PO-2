@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,19 +31,49 @@ public class AluguelDAO {
         Connection con = gerenciador.getConexao();
         PreparedStatement stmt = null;
         try {
-            // Insere um novo registro na tabela de aluguel
-            String sql = "INSERT INTO aluguel (pkusuario, pklivro) VALUES (?, ?)";
+            String sql = "INSERT INTO aluguel (fkusuario, fklivro,acao) VALUES (?,?, ?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1, idUsuario);
             statement.setInt(2, idLivro);
-
-            // Executa a inserção
+            statement.setInt(3, 1);
+  
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("Livro alugado com sucesso!");
+                 alterarStatusLivro(idLivro,1);
                 return true;
             } else {
                 System.out.println("Não foi possível alugar o livro.");
+            }
+  
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            GerenciadorConexao.closeConnection(con,stmt );
+        }
+        return false;
+        
+    }
+    
+     public boolean devolverLivro( int idUsuario, int idLivro) {
+        GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
+        Connection con = gerenciador.getConexao();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "INSERT INTO aluguel (fkusuario, fklivro,acao) VALUES (?,?, ?)";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1, idUsuario);
+            statement.setInt(2, idLivro);
+            statement.setInt(3, 0);
+
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Livro devolvido com sucesso!");
+                alterarStatusLivro(idLivro,0);
+                return true;
+            } else {
+                System.out.println("Não foi possível devolver o livro.");
             }
 
             // Fecha a declaração
@@ -71,27 +102,48 @@ public class AluguelDAO {
 
             while (rs.next()) {
 
-                Aluguel usuario = new Usuario();
+                Aluguel aluguel = new Aluguel();
 
-                usuario.setPk(rs.getInt("pkusuario"));
-                usuario.setNome(rs.getString("nomeusu"));
-                usuario.setEmail(rs.getString("emailusu"));
-                usuario.setSenha(rs.getString("senhausu"));
-                usuario.setDataNasc(rs.getString("datanascusu"));
-                usuario.setAtivo(rs.getInt("ativousu"));
-                usuarios.add(usuario);
+                aluguel.setId_aluguel(rs.getInt("id_aluguel"));
+                aluguel.setfklivro(rs.getInt("fklivro"));
+                aluguel.setfkusuario(rs.getInt("fkusuario"));
+                aluguel.setAcao(rs.getInt("acao"));
+               
+                alugueis.add(aluguel);
 
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AluguelDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             GerenciadorConexao.closeConnection(con, stmt, rs);
         }
-        return usuarios;
+        return alugueis;
 
     }
-    
+      public boolean alterarStatusLivro(int fklivro, int status) {
+        GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
+        Connection con = gerenciador.getConexao();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE tblivro SET "
+                    + " estoquelivro = ? WHERE pkLivro = ?");
+            stmt.setInt(1, status);
+            stmt.setInt(2, fklivro);
+
+            stmt.executeUpdate();
+
+           
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
+        } finally {
+            GerenciadorConexao.closeConnection(con, stmt);
+        }
+        return false;
+    }
+
     
 
 }

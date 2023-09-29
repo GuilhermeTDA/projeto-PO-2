@@ -51,7 +51,7 @@ public class FRAluguel extends java.awt.Dialog {
         bdVoltar = new javax.swing.JButton();
         bdSalvar = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
-        bdExcluir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jPanel1.setForeground(new java.awt.Color(204, 0, 0));
 
@@ -113,8 +113,8 @@ public class FRAluguel extends java.awt.Dialog {
             }
         });
 
-        bdSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/save.png"))); // NOI18N
-        bdSalvar.setText("SALVAR");
+        bdSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/livro.png"))); // NOI18N
+        bdSalvar.setText("ALUGAR");
         bdSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bdSalvarMouseClicked(evt);
@@ -124,17 +124,10 @@ public class FRAluguel extends java.awt.Dialog {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Este usuário alugará este livro");
 
-        bdExcluir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        bdExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/trash.png"))); // NOI18N
-        bdExcluir.setText("Excluir");
-        bdExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton1.setText("Devolver");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bdExcluirMouseClicked(evt);
-            }
-        });
-        bdExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bdExcluirActionPerformed(evt);
+                jButton1MouseClicked(evt);
             }
         });
 
@@ -142,34 +135,34 @@ public class FRAluguel extends java.awt.Dialog {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(bdSalvar)
-                .addGap(73, 73, 73)
-                .addComponent(bdExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bdVoltar)
-                .addGap(44, 44, 44))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(151, 151, 151)
                         .addComponent(jLabel3))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel1)))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(101, 101, 101)
-                                .addComponent(cLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addGap(71, 71, 71)))))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                            .addGap(39, 39, 39)
+                            .addComponent(bdSalvar)
+                            .addGap(71, 71, 71)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bdVoltar))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                            .addGap(28, 28, 28)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(46, 46, 46)
+                                    .addComponent(jLabel1)))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(101, 101, 101)
+                                    .addComponent(cLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel2)
+                                    .addGap(71, 71, 71))))))
                 .addGap(39, 59, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -186,10 +179,11 @@ public class FRAluguel extends java.awt.Dialog {
                     .addComponent(cUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bdVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bdSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bdExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bdVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bdSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23))
         );
 
@@ -241,31 +235,27 @@ public class FRAluguel extends java.awt.Dialog {
         AluguelController controller = new AluguelController();
         int livro = Integer.parseInt(cLivro.getText());
         int usu = Integer.parseInt(cUsu.getText());
-        if (controller.alugarLivro(livro, usu)) {
+        if (controller.alugarLivro(usu, livro)) {
             this.dispose();
         }
     }//GEN-LAST:event_bdSalvarMouseClicked
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+       if (!verificarCampos()) {
+            return;
+        }
+
+        AluguelController controller = new AluguelController();
+        int livro = Integer.parseInt(cLivro.getText());
+        int usu = Integer.parseInt(cUsu.getText());
+        if (controller.devolverLivro(usu, livro)) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
    
     
     
-    private void bdExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bdExcluirMouseClicked
-        int resposta = JOptionPane.showConfirmDialog(null, "Deseja devolver o livro?",
-            "confirmação", JOptionPane.YES_NO_OPTION);
-        if (resposta == JOptionPane.YES_OPTION) {
-              int livro = Integer.parseInt(cLivro.getText());
-               int usu = Integer.parseInt(cUsu.getText());
-            AluguelController controller = new AluguelController();
-            if (controller.devolverLivro(livro, usu)) {
-                this.dispose();
-            }
-        }
-    }//GEN-LAST:event_bdExcluirMouseClicked
-
-    private void bdExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdExcluirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bdExcluirActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -285,11 +275,11 @@ public class FRAluguel extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bdExcluir;
     private javax.swing.JToggleButton bdSalvar;
     private javax.swing.JButton bdVoltar;
     private javax.swing.JTextField cLivro;
     private javax.swing.JTextField cUsu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
