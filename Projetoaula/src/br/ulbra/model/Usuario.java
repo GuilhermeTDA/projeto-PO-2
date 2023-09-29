@@ -5,7 +5,6 @@
  */
 package br.ulbra.model;
 
-import javax.swing.Icon;
 
 /**
  *

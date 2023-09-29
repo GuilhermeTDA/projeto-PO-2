@@ -19,13 +19,14 @@ import java.util.logging.Logger;
  * @author S.Lucas
  */
 public class LivroDAO {
-     private GerenciadorConexao gerenciador;
+
+    private GerenciadorConexao gerenciador;
 
     public LivroDAO() {
         this.gerenciador = GerenciadorConexao.getInstancia();
     }
 
-     public boolean adicionarLivro(String nome, String genero, String lançamento, int estoque) {
+    public boolean adicionarLivro(String nome, String genero, String lançamento, int estoque) {
         String sql = "INSERT into tblivro (nomeLivro,genLivro,lançLivro,estoqueLivro) "
                 + "VALUES (?,?,?,?)";
 
@@ -43,8 +44,8 @@ public class LivroDAO {
         }
         return false;
     }
-     
-      public List<Livro> read() {
+
+    public List<Livro> read() {
         String sql = "SELECT * FROM tblivro";
         List<Livro> livros = new ArrayList<>();
 
@@ -76,8 +77,8 @@ public class LivroDAO {
         }
         return livros;
     }
-      
-       public List<Livro> readForDesc(String desc) {
+
+    public List<Livro> readForDesc(String desc) {
         String sql = "SELECT * FROM tblivro WHERE nomelivro LIKE ?";
         GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
         Connection con = gerenciador.getConexao();
@@ -92,8 +93,8 @@ public class LivroDAO {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                
-                    Livro livro = new Livro();
+
+                Livro livro = new Livro();
 
                 livro.setPkLivro(rs.getInt("pklivro"));
                 livro.setNomeLivro(rs.getString("nomelivro"));
@@ -112,14 +113,14 @@ public class LivroDAO {
         return livros;
 
     }
-       
-         public Livro readForPk(int pk) {
+
+    public Livro readForPk(int pk) {
         String sql = "SELECT * FROM tbulivro WHERE pklivro = ?";
         GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
         Connection con = gerenciador.getConexao();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-         Livro livro = new Livro();
+        Livro livro = new Livro();
 
         try {
             stmt = con.prepareStatement(sql);
@@ -129,7 +130,7 @@ public class LivroDAO {
 
             while (rs.next()) {
 
-                 livro.setPkLivro(rs.getInt("pklivro"));
+                livro.setPkLivro(rs.getInt("pklivro"));
                 livro.setNomeLivro(rs.getString("nomelivro"));
                 livro.setLançLivro(rs.getString("lançlivro"));
                 livro.setGenLivro(rs.getString("genlivro"));
@@ -144,24 +145,24 @@ public class LivroDAO {
         }
         return livro;
     }
-         
-         public boolean alterarLivro(Livro l) {
-       GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
+
+    public boolean alterarLivro(Livro l) {
+        GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
         Connection con = gerenciador.getConexao();
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement("UPDATE tblivro SET nomelivro = ?, "
-            +" genlivro = ?,lançlivro = ?, "
-            +" estoquelivro = ? WHERE pkLivro = ?");
+                    + " genlivro = ?,lançlivro = ?, "
+                    + " estoquelivro = ? WHERE pkLivro = ?");
             stmt.setString(1, l.getNomeLivro());
             stmt.setString(2, l.getLançLivro());
             stmt.setString(3, l.getGenLivro());
             stmt.setInt(4, l.getEstoqueLivro());
             stmt.setInt(5, l.getPkLivro());
-            
+
             stmt.executeUpdate();
-            
+
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
             return true;
         } catch (SQLException ex) {
@@ -171,18 +172,18 @@ public class LivroDAO {
         }
         return false;
     }
-         
-      public boolean excluirLivro(int pkLivro) {
-       GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
+
+    public boolean excluirLivro(int pkLivro) {
+        GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
         Connection con = gerenciador.getConexao();
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement("DELETE FROM tblivro WHERE pklivro = ?");
             stmt.setInt(1, pkLivro);
-            
+
             stmt.executeUpdate();
-            
+
             JOptionPane.showMessageDialog(null, "Excluido com sucesso");
             return true;
         } catch (SQLException ex) {

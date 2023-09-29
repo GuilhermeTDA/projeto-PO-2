@@ -248,7 +248,7 @@ public class FRCadUsu extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "campo 'Email' em branco");
             return false;
         }
-        if (!txtEmail.getText().matches("^[a-a-zA-Z._]+@[a-zA-Z._]+.[a-zA-Z._ ]+$")) {
+        if (!txtEmail.getText().matches("^[a-zA-Z._]+@[a-zA-Z._]+.[a-zA-Z._ ]+$")) {
             JOptionPane.showMessageDialog(null, "campo 'Email' possui caracteres inválidos");
             return false;
         }

@@ -5,7 +5,7 @@
 package br.ulbra.controller;
 
 import br.ulbra.model.AluguelDAO;
-import br.ulbra.model.Usuario;
+import br.ulbra.model.Aluguel;
 import java.util.List;
 
 /**
@@ -13,26 +13,25 @@ import java.util.List;
  * @author S.Lucas
  */
 public class AluguelController {
-     private AluguelDAO livroUsuDAO;
+
+    private AluguelDAO livroUsuDAO;
 
     public AluguelController() {
         livroUsuDAO = new AluguelDAO();
     }
-    
-     public boolean alugarLivro(int usuarioid, int livroid) {
-       
-            return livroUsuDAO.alugarLivro(usuarioid,livroid);
 
-        
-    } 
-     
-      public boolean devolverLivro (int usu,int livro) {
-             return livroUsuDAO.devolverLivro(int usu,int livro);
-         }
-      
-       public List<Aluguel> readForDesc(String desc) {
+    public boolean alugarLivro(int usuarioid, int livroid) {
+
+        return livroUsuDAO.alugarLivro(usuarioid, livroid);
+
+    }
+
+    public boolean devolverLivro(int usu, int livro) {
+        return livroUsuDAO.devolverLivro(usu,livro);
+    }
+
+    public List<Aluguel> readForDesc(String desc) {
         return livroUsuDAO.readForDesc(desc);
     }
-      
-     
+
 }
